@@ -27,7 +27,7 @@
   },
   "endpoints" : {
     "Channels" : {
-      "sample" : "./samples/channel_archive.js",
+      "sample" : "./samples/channel_list.js",
       "docs" : "https://api.slack.com/methods"
     }
   }
