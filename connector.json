@@ -1,0 +1,34 @@
+
+{
+  "name": "Slack",
+  "slug" : "vend",
+  "url": "https://slack.com/",
+  "auth_types" : {
+    "Public": {
+      "setup_help": "./samples/getting_started.md",
+      "requires_signing": true
+    }
+  },
+  "settings": [{
+    "key": "clientId",
+    "type" : "text",
+    "description": "Client Id",
+    "for_types": ["Public"],
+    "required": true
+  },{
+    "key": "clientSecret",
+    "type" : "text",
+    "description": "Client Secret",
+    "for_types": ["Public"],
+    "required": true
+  }],
+  "samples" : {
+    "getting_started" : "./samples/getting_started.js"
+  },
+  "endpoints" : {
+    "Channels" : {
+      "sample" : "./samples/channel_archive.js",
+      "docs" : "https://api.slack.com/methods"
+    }
+  }
+}
