@@ -286,7 +286,7 @@ describe('SlackConnector', function () {
           method: 'POST',
           resolveWithFullResponse: true,
           uri: 'https://slack.com/api/groups.rename',
-          body: data,
+          form: data,
           json: true
         };
         var result;
