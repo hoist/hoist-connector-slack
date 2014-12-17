@@ -17,7 +17,7 @@ describe('SlackConnector', function () {
     });
     connector.authSettings = {
       authProxy: {
-        token: '<access_token>'
+        token: '123456789'
       },
       get: function (name) {
         return this.authProxy[name];
@@ -101,7 +101,7 @@ describe('SlackConnector', function () {
         after(function () {
           connector.authSettings = {
             authProxy: {
-              token: '<access_token>'
+              token: '123456789'
             },
             get: function (name) {
               return this.authProxy[name];
@@ -126,10 +126,7 @@ describe('SlackConnector', function () {
         };
         var options = {
           method: 'GET',
-          uri: 'https://slack.com/api/groups.rename',
-          body: {
-            token: '<access_token>'
-          },
+          uri: 'https://slack.com/api/groups.rename?token=123456789',
           json: true,
           resolveWithFullResponse: true
         };
@@ -162,10 +159,7 @@ describe('SlackConnector', function () {
         };
         var options = {
           method: 'GET',
-          uri: 'https://slack.com/api/groups.rename?query=query',
-          body: {
-            token: '<access_token>'
-          },
+          uri: 'https://slack.com/api/groups.rename?query=query&token=123456789',
           json: true,
           resolveWithFullResponse: true
         };
@@ -194,10 +188,7 @@ describe('SlackConnector', function () {
         };
         var options = {
           method: 'GET',
-          uri: 'https://slack.com/api/groups.rename?query=query',
-          body: {
-            token: '<access_token>'
-          },
+          uri: 'https://slack.com/api/groups.rename?query=query&token=123456789',
           json: true,
           resolveWithFullResponse: true
         };
@@ -225,10 +216,7 @@ describe('SlackConnector', function () {
         };
         var options = {
           method: 'GET',
-          uri: 'https://slack.com/api/groups.rename?querypath=querypath&query=query',
-          body: {
-            token: '<access_token>'
-          },
+          uri: 'https://slack.com/api/groups.rename?querypath=querypath&query=query&token=123456789',
           json: true,
           resolveWithFullResponse: true
         };
@@ -256,10 +244,7 @@ describe('SlackConnector', function () {
         };
         var options = {
           method: 'GET',
-          uri: 'https://slack.com/api/groups.rename?query=query',
-          body: {
-            token: '<access_token>'
-          },
+          uri: 'https://slack.com/api/groups.rename?query=query&token=123456789',
           json: true,
           resolveWithFullResponse: true
         };
@@ -295,7 +280,7 @@ describe('SlackConnector', function () {
           Staff: {
             Name: "John"
           },
-          token: '<access_token>'
+          token: '123456789'
         };
         var options = {
           method: 'POST',
