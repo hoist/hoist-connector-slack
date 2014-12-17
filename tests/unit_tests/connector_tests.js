@@ -34,14 +34,14 @@ describe('SlackConnector', function () {
       var result;
       before(function () {
         sinon.stub(connector, 'request').returns(BBPromise.resolve(response));
-        result = connector.get('/customers');
+        result = connector.get('/groups.rename');
       });
       after(function () {
         connector.request.restore();
       });
       it('calls #request', function () {
         expect(connector.request)
-          .to.have.been.calledWith('GET', '/customers');
+          .to.have.been.calledWith('GET', '/groups.rename');
       });
     });
     describe('with queryParams', function () {
@@ -52,14 +52,14 @@ describe('SlackConnector', function () {
       };
       before(function () {
         sinon.stub(connector, 'request').returns(BBPromise.resolve(response));
-        result = connector.get('/customers', queryParams);
+        result = connector.get('/groups.rename', queryParams);
       });
       after(function () {
         connector.request.restore();
       });
       it('calls #request', function () {
         expect(connector.request)
-          .to.have.been.calledWith('GET', '/customers', queryParams);
+          .to.have.been.calledWith('GET', '/groups.rename', queryParams);
       });
     });
   });
@@ -79,14 +79,14 @@ describe('SlackConnector', function () {
       };
       before(function () {
         sinon.stub(connector, 'request').returns(BBPromise.resolve(response));
-        result = connector.post('/customers', data);
+        result = connector.post('/groups.rename', data);
       });
       after(function () {
         connector.request.restore();
       });
       it('calls #request', function () {
         expect(connector.request)
-          .to.have.been.calledWith('POST', '/customers', null, data);
+          .to.have.been.calledWith('POST', '/groups.rename', null, data);
       });
     });
   });
