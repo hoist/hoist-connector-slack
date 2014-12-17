@@ -1,4 +1,4 @@
-#Adding a Vend Connector
+#Adding a Slack Connector
 1. Log in to [https://api.slack.com/](https://api.slack.com/)
 2. Click the *'Your Applications'* tab
 3. Click *'Create a new application'*
