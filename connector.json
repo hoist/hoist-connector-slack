@@ -1,7 +1,7 @@
 
 {
   "name": "Slack",
-  "slug" : "vend",
+  "slug" : "slack",
   "url": "https://slack.com/",
   "auth_types" : {
     "Public": {
