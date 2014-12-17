@@ -26,9 +26,61 @@
     "getting_started" : "./samples/getting_started.js"
   },
   "endpoints" : {
+    "Api" : {
+      "sample" : "./samples/api.js",
+      "docs" : "https://api.slack.com/methods#api"
+    },
+    "Auth" : {
+      "sample" : "./samples/auth.js",
+      "docs" : "https://api.slack.com/methods#auth"
+    },
     "Channels" : {
       "sample" : "./samples/channel_list.js",
-      "docs" : "https://api.slack.com/methods"
+      "docs" : "https://api.slack.com/methods#channels"
+    },
+    "Chat" : {
+      "sample" : "./samples/chat.js",
+      "docs" : "https://api.slack.com/methods#chat"
+    },
+    "Emoji" : {
+      "sample" : "./samples/emoji.js",
+      "docs" : "https://api.slack.com/methods#emoji"
+    },
+    "Files" : {
+      "sample" : "./samples/files.js",
+      "docs" : "https://api.slack.com/methods#files"
+    },
+    "Groups" : {
+      "sample" : "./samples/groups.js",
+      "docs" : "https://api.slack.com/methods#groups"
+    },
+    "Im" : {
+      "sample" : "./samples/im.js",
+      "docs" : "https://api.slack.com/methods#im"
+    },
+    "OAuth" : {
+      "sample" : "./samples/oauth.js",
+      "docs" : "https://api.slack.com/methods#oauth"
+    },
+    "Presence" : {
+      "sample" : "./samples/presence.js",
+      "docs" : "https://api.slack.com/methods#presence"
+    },
+    "Real Time Messaging" : {
+      "sample" : "./samples/rtm.js",
+      "docs" : "https://api.slack.com/methods#rtm"
+    },
+    "Search" : {
+      "sample" : "./samples/search.js",
+      "docs" : "https://api.slack.com/methods#search"
+    },
+    "Stars" : {
+      "sample" : "./samples/stars.js",
+      "docs" : "https://api.slack.com/methods#stars"
+    },
+    "Users" : {
+      "sample" : "./samples/users.js",
+      "docs" : "https://api.slack.com/methods#users"
     }
   }
 }
