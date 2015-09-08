@@ -1,0 +1,6 @@
+deploy:
+  build: .
+  environment:
+   - NODE_ENV=docker
+  volumes_from:
+   - hoist_config_1
