@@ -8,8 +8,8 @@ User=core
 Type=oneshot
 ExecStartPre=-/usr/bin/docker kill slack-connector-deploy
 ExecStartPre=-/usr/bin/docker rm slack-connector-deploy
-ExecStartPre=-/usr/bin/docker pull quay.io/hoist/connector-slack:master
-ExecStart=/usr/bin/docker run -h slack-connector-deploy --name slack-connector-deploy -e "ROOT_CONNECTOR_DIR=/shares/connectors" --volumes-from config -P quay.io/hoist/connector-slack:master
+ExecStartPre=-/usr/bin/docker pull hoist/connector-slack:master
+ExecStart=/usr/bin/docker run -h slack-connector-deploy --name slack-connector-deploy -e "ROOT_CONNECTOR_DIR=/shares/connectors" --volumes-from config -P hoist/connector-slack:master
 ExecStop=/usr/bin/docker stop slack-connector-deploy
 ExecStopPost=-/usr/bin/docker kill slack-connector-deploy
 ExecStopPost=-/usr/bin/docker rm slack-connector-deploy
