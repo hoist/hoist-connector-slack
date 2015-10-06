@@ -30,7 +30,7 @@ test:
     - docker rm mongodb; true;
     - docker kill hoist-connector-slack-test; true;
     - docker rm hoist-connector-slack-test; true;
-    - docker run -d --name mongodb mongo
+    - docker run -d --name mongodb mongo:3.0.5
     - docker run -t --link mongodb:db --name hoist-connector-slack-test --entrypoint gulp hoist/connector-slack:${CIRCLE_BRANCH//feature\//} test
   post:
     - docker cp hoist-connector-slack-test:/usr/src/app/coverage ~/
