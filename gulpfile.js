@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var istanbul = require('gulp-istanbul');
 var mocha = require('gulp-mocha');
-var coverageEnforcer = require('gulp-istanbul-enforcer');
 var runSequence = require('run-sequence');
 
 var globs = {
@@ -53,22 +52,14 @@ gulp.task('jshint', function () {
 
 
 
-gulp.task('mocha-server-continue', function (cb) {
-  gulp.src(globs.js.lib)
+gulp.task('mocha-server-continue', ['mocha-server']);
+
+gulp.task('pre-test', () => {
+  return gulp.src(globs.js.lib)
     .pipe(istanbul())
-    .on('error', function (err) {
-      console.log('istanbul error', err);
-    })
-    .on('finish', function () {
-      mochaServer().on('error', function (err) {
-        console.trace(err);
-        this.emit('end');
-        cb();
-      }).pipe(istanbul.writeReports(coverageOptions))
-        .on('end', cb);
-    });
+    .pipe(istanbul.hookRequire());
 });
-gulp.task('enforce-coverage', ['mocha-server'], function () {
+gulp.task('mocha-server', ['pre-test'], function () {
   var options = {
     thresholds: {
       statements: 80,
@@ -79,19 +70,13 @@ gulp.task('enforce-coverage', ['mocha-server'], function () {
     coverageDirectory: 'coverage',
     rootDirectory: process.cwd()
   };
-  return gulp.src(globs.js.lib)
-    .pipe(coverageEnforcer(options));
-});
-gulp.task('mocha-server', function (cb) {
-  gulp.src(globs.js.lib)
-    .pipe(istanbul())
-    .on('finish', function () {
-      mochaServer({
-        reporter: 'spec'
-      })
-        .pipe(istanbul.writeReports(coverageOptions))
-        .on('end', cb);
-    });
+
+  return mochaServer({
+      reporter: 'spec'
+    })
+    .pipe(istanbul.writeReports(coverageOptions))
+    .pipe(istanbul.enforceThresholds(options));
+
 });
 
 gulp.task('watch', function () {
@@ -99,7 +84,8 @@ gulp.task('watch', function () {
   var watching = false;
   gulp.start(
     'jshint',
-    'mocha-server-continue', function () {
+    'mocha-server-continue',
+    function () {
       // Protect against this function being called twice
       if (!watching) {
         watching = true;
@@ -114,16 +100,13 @@ gulp.task('seq-test', function () {
 });
 gulp.task('test', function () {
   return gulp.start('jshint-build',
-    'mocha-server',
-    'enforce-coverage');
+    'mocha-server');
 });
 gulp.task('build', function () {
   return gulp.start('jshint-build',
-    'mocha-server',
-    'enforce-coverage');
+    'mocha-server');
 });
 gulp.task('default', function () {
   return gulp.start('jshint-build',
-    'mocha-server',
-    'enforce-coverage');
+    'mocha-server');
 });
