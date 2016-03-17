@@ -32,7 +32,7 @@
     "sinon-chai": "^2.5.0"
   },
   "dependencies": {
-    "@hoist/errors": "^1.0.3",
+    "@hoist/errors": "^2.0.2",
     "@hoist/logger": "^1.0.5",
     "bluebird": "^3.3.4",
     "config": "^1.8.1",
