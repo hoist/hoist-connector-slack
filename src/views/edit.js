@@ -16,27 +16,39 @@ class EditForm extends C.View {
     this.props.onConnect();
   }
   render() {
-    return (
-      <C.Page default="setup" {...this.props}>
-        <C.Panel name="Setup" slug="setup">
-          <UI.FormElements.Button text={this.props.connectorInstance ? 'Reauthorize' : 'Connect'} type="large" onClick={()=>{
-              return this.connect();
-            }} />
-        </C.Panel>
-        {this.props.connectorInstance ? <C.Panel name="Events" slug="events">
-        <C.PageHeader
-          title="Check the boxes of the events you want to subscribe to."
-          subTitle="Checking a box will automatically subscribe you to that event." />
-          <C.CheckboxGrid
-            items={this.getAvailableEvents()}
-            checked={this.getSubscribedEvents()}
-            onChange={this.props.onSubscribe} />
-        </C.Panel> : <C.Panel name="Events" slug="events">
-          <C.EventsGrid.Header
-            title="Events are available once you've connected." />
-        </C.Panel>}
-      </C.Page>
-    );
+    if(this.props.connectorInstance) {
+      return (
+        <C.Page default="setup" {...this.props}>
+          <C.Panel name="Setup" slug="setup">
+            <C.Column type="notes">
+              <h1>Set up an outgoing webhook in Slack</h1>
+
+              <ol>
+                <li>Go to the the slack hub and click 'Add Outgoing Webhooks Integration'.</li>
+                <li>Scroll down to "Trigger Word(s)" and enter a trigger, in the demo we use jarvis.</li>
+                <li>In the URL box, add: https://endpoint.hoi.io/jamie8884/cos/slack-incoming</li>
+                <li>Click save, and then go back to the editor</li>
+              </ol>
+            </C.Column>
+            <C.Column>
+              <UI.FormElements.Button text={this.props.connectorInstance ? 'Reauthorize' : 'Connect'} type="large" onClick={()=>{
+                  return this.connect();
+                }} />
+            </C.Column>
+          </C.Panel>
+        </C.Page>
+      );
+    } else {
+      return (
+        <C.Page default="setup" {...this.props}>
+          <C.Panel name="Setup" slug="setup">
+            <UI.FormElements.Button text={this.props.connectorInstance ? 'Reauthorize' : 'Connect'} type="large" onClick={()=>{
+                return this.connect();
+              }} />
+          </C.Panel>
+        </C.Page>
+      );
+    }
   }
 }
 
